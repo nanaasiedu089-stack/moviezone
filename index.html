@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>MovieZone - Discover Films</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="hero-panel">
+      <div>
+        <span class="eyebrow">MovieZone</span>
+        <h1>Discover your next movie night</h1>
+        <p>Explore trending films, filters, trailers, and a watchlist — all in one interactive movie website.</p>
+      </div>
+      <section class="hero-actions">
+        <div class="search-box">
+          <input id="searchInput" type="search" placeholder="Search movies, directors, actors...">
+          <button id="searchBtn" type="button">Search</button>
+          <button id="jwBtn" type="button" class="secondary">Check availability</button>
+        </div>
+        <div class="filter-row">
+          <select id="genreFilter" aria-label="Filter by genre">
+            <option value="all">All genres</option>
+          </select>
+          <select id="sortFilter" aria-label="Sort movies">
+            <option value="popularity">Sort by popularity</option>
+            <option value="rating">Highest rating</option>
+            <option value="year">Newest first</option>
+          </select>
+        </div>
+      </section>
+    </header>
+
+    <section class="stats-panel">
+      <article>
+        <strong id="totalMovies">0</strong>
+        <span>Movies available</span>
+      </article>
+      <article>
+        <strong id="activeGenre">All genres</strong>
+        <span>Current filter</span>
+      </article>
+      <article>
+        <strong id="watchlistCount">0</strong>
+        <span>Watchlist items</span>
+      </article>
+    </section>
+
+    <section class="movie-grid" id="movieGrid" aria-live="polite"></section>
+  </main>
+
+  <div class="modal hidden" id="movieModal" role="dialog" aria-modal="true" aria-labelledby="movieTitle">
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+    <div class="modal-card">
+      <button class="modal-close" id="modalClose" type="button" aria-label="Close details">×</button>
+      <div class="modal-media">
+        <img id="modalPoster" src="" alt="Movie poster">
+        <div class="modal-meta">
+          <span id="modalTag" class="tag"></span>
+          <span id="modalYear"></span>
+          <span id="modalRating"></span>
+        </div>
+      </div>
+      <div class="modal-body">
+        <h2 id="movieTitle"></h2>
+        <p id="movieDescription"></p>
+        <dl>
+          <div>
+            <dt>Genre</dt>
+            <dd id="modalGenre"></dd>
+          </div>
+          <div>
+            <dt>Director</dt>
+            <dd id="modalDirector"></dd>
+          </div>
+          <div>
+            <dt>Cast</dt>
+            <dd id="modalCast"></dd>
+          </div>
+        </dl>
+        <div class="modal-actions">
+          <button id="watchlistBtn" type="button">Add to watchlist</button>
+          <a id="downloadLink" href="#" download class="button">Download</a>
+          <a id="trailerLink" href="#" target="_blank" rel="noopener" class="button secondary">Watch trailer</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="ai-assistant">
+    <button class="assistant-toggle" id="assistantToggle" type="button">AI Guide</button>
+    <div class="assistant-panel hidden" id="assistantPanel">
+      <div class="assistant-header">
+        <div>
+          <span class="eyebrow">MovieZone Assistant</span>
+          <h2>MovieZone AI Guide</h2>
+        </div>
+        <button id="assistantClose" class="assistant-close" type="button" aria-label="Close assistant">×</button>
+      </div>
+      <div class="assistant-messages" id="assistantMessages" aria-live="polite"></div>
+      <form id="assistantForm" class="assistant-form">
+        <input id="assistantInput" type="text" placeholder="Ask for a recommendation or preference..." aria-label="AI assistant input">
+        <button type="submit">Send</button>
+      </form>
+      <div class="assistant-actions">
+        <button type="button" class="quick-btn" data-action="recommend">Recommend movies</button>
+        <button type="button" class="quick-btn" data-action="genre">Show genres</button>
+        <button type="button" class="quick-btn" data-action="time">Choose by mood</button>
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

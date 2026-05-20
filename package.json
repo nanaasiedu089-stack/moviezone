@@ -1,0 +1,15 @@
+{
+  "name": "moviezone-server",
+  "version": "1.0.0",
+  "description": "MovieZone website with Node.js/Express server and download endpoints.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.4"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}
